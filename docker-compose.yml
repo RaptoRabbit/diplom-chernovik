@@ -1,0 +1,28 @@
+services:
+  api:
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - NODE_ENV=production
+      - PY_SERVICE_URL=http://python:9001
+    depends_on:
+      - python
+
+  python:
+    build:
+      context: ./python
+    ports:
+      - "9001:9001"
+    environment:
+      - PYTHONUNBUFFERED=1
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+
