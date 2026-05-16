@@ -16,5 +16,5 @@ backend:
 python:
 	cd python && python -m app.__main__
 
-
+пароль БД: market_password
 
